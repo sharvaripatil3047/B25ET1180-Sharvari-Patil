@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+public:
+    void salary(float basic)
+    {
+        cout << "Salary without bonus = " << basic << endl;
+    }
+
+    void salary(float basic, float bonus)
+    {
+        cout << "Salary with bonus = " << basic + bonus << endl;
+    }
+};
+
+int main()
+{
+    Employee e;
+
+    e.salary(25000);
+    e.salary(25000, 5000);
+
+    return 0;
+}
