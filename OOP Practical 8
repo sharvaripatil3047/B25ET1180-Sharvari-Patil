@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+protected:
+    int emp_id;
+    string name;
+    float basic_salary;
+
+public:
+    void getEmployee()
+    {
+        cout << "Enter Employee ID: ";
+        cin >> emp_id;
+
+        cout << "Enter Employee Name: ";
+        cin >> name;
+
+        cout << "Enter Basic Salary: ";
+        cin >> basic_salary;
+    }
+};
+
+class Bonus
+{
+protected:
+    float annual_bonus;
+
+public:
+    void getBonus()
+    {
+        cout << "Enter Annual Bonus: ";
+        cin >> annual_bonus;
+    }
+};
+
+class Salary : public Employee, public Bonus
+{
+public:
+    void displaySalary()
+    {
+        float final_salary = basic_salary + annual_bonus;
+
+        cout << "\n--- Employee Salary Details ---" << endl;
+        cout << "Employee ID: " << emp_id << endl;
+        cout << "Employee Name: " << name << endl;
+        cout << "Basic Salary: " << basic_salary << endl;
+        cout << "Annual Bonus: " << annual_bonus << endl;
+        cout << "Final Salary: " << final_salary << endl;
+    }
+};
+
+int main()
+{
+    Salary s;
+
+    s.getEmployee();
+    s.getBonus();
+    s.displaySalary();
+
+    return 0;
+}
