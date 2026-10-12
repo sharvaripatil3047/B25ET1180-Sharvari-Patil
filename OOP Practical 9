@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+class Ticket
+{
+public:
+    virtual void calculateFare()
+    {
+        cout << "Calculating ticket fare..." << endl;
+    }
+};
+
+class BusTicket : public Ticket
+{
+public:
+    void calculateFare() override
+    {
+        float distance, rate, fare;
+
+        cout << "Enter bus distance (km): ";
+        cin >> distance;
+
+        cout << "Enter rate per km: ";
+        cin >> rate;
+
+        fare = distance * rate;
+
+        cout << "Bus Ticket Fare: Rs. " << fare << endl;
+    }
+};
+
+class FlightTicket : public Ticket
+{
+public:
+    void calculateFare() override
+    {
+        float baseFare, tax, fare;
+
+        cout << "Enter flight base fare: ";
+        cin >> baseFare;
+
+        cout << "Enter tax amount: ";
+        cin >> tax;
+
+        fare = baseFare + tax;
+
+        cout << "Flight Ticket Fare: Rs. " << fare << endl;
+    }
+};
+
+int main()
+{
+    Ticket *t;
+    BusTicket b;
+    FlightTicket f;
+    int choice;
+
+    cout << "1. Bus Ticket" << endl;
+    cout << "2. Flight Ticket" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    if (choice == 1)
+        t = &b;
+    else if (choice == 2)
+        t = &f;
+    else
+    {
+        cout << "Invalid choice!" << endl;
+        return 0;
+    }
+
+    t->calculateFare();
+
+    return 0;
+}
