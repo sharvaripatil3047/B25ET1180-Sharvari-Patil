@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int roll;
+
+    cout << "Enter Student Roll Number: ";
+    cin >> roll;
+
+    try
+    {
+        if (roll <= 0)
+            throw roll;
+
+        cout << "Valid Student Roll Number: " << roll << endl;
+    }
+    catch (int x)
+    {
+        cout << "Exception Caught!" << endl;
+        cout << "Invalid Roll Number: " << x << endl;
+    }
+
+    return 0;
+}
